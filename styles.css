@@ -344,3 +344,71 @@ footer {
     margin-top: auto; /* Pushes footer to the bottom of the page */
 }
 
+
+
+/* Shop Page */
+#shopH1 {
+    font-family: gwendolyn;
+    margin-left: 10px;
+}
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: lato;
+    margin: 0 10px 2rem;
+}
+
+.shop-form, .cart {
+    flex: 1 1 320px;
+    border: 1px solid #7A002B;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+}
+
+.shop-form h2, .cart h2 {
+    margin-top: 0;
+}
+
+.shop-form label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.shop-form select, .shop-form input {
+    margin-left: 0.5rem;
+    padding: 4px;
+}
+
+.cart table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.cart th, .cart td {
+    text-align: left;
+    padding: 6px 4px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart .remove-btn {
+    padding: 2px 8px;
+}
+
+.cart-total {
+    font-size: 1.1rem;
+}
+
+button:disabled {
+    background-color: #b9a0a8;
+    cursor: not-allowed;
+}
+
+.order-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: #f6e6ec;
+}
