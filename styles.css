@@ -45,6 +45,11 @@ header h1 {
     color: #FFFFFF;
 }
 
+header h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Navigation Bar */
 nav {
     background-color: #D88291;
@@ -68,6 +73,7 @@ nav ul li a {
     color: #000000;
     text-decoration: none;
     display: inline-block;
+    text-align: center;     /* Hover spacing grows outward from the center of the text */
     transition: transform 0.3s ease;
 }
 
