@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.carousel-track');
-  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
   const nextBtn = document.getElementById('nextBtn');
   const prevBtn = document.getElementById('prevBtn');
 
+  if (!track || !nextBtn || !prevBtn) return;
+
+  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
   let currentIndex = 1;
   let isTransitioning = false;
 
@@ -46,4 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     currentIndex++;
     updateCarousel();
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  for (const field of ['name', 'email', 'message']) {
+    const output = document.getElementById(`submitted-${field}`);
+    if (output) {
+      output.textContent = urlParams.get(field) || '';
+    }
+  }
 });

@@ -3,9 +3,33 @@
     border-style: dashed;
 } */
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+/* 1. Remove default browser margins and padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+/* 2. Ensure padding/borders don't add extra width */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 header {
@@ -18,8 +42,10 @@ header {
 
 header h1 {
     text-align: center;
+    color: #FFFFFF;
 }
 
+/* Navigation Bar */
 nav {
     background-color: #D88291;
     padding: .2px;
@@ -36,20 +62,19 @@ nav ul {
     justify-content: center; 
 }
 
-/* nav ul li {
-    min-width: 100px;
-    display: block;
-} */
 
 nav ul li a {
     font-family: lato;
     color: #000000;
     text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
 nav a:hover {
     letter-spacing: 2px;
     font-weight: bold;
+    /* transform: scaleX(1.15); */
 }
 
 nav ul li a.active {
@@ -68,73 +93,7 @@ h1 {
     text-align: center;
 }
 
-.inspiration img {
-  width: 100%;          
-  max-width: 300px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px; 
-}
-
-p {
-    font-family: lato;
-}
-
-.myNails img {
-    width: 100%;        /*keep image ratio*/      
-    max-width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px; 
-}
-
-iframe {
-    border-radius: 4px; 
-}
-
-.video-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
-    padding: 20px;
-}
-
-.video-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.video-card iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    border: 0;
-    display: block;
-}
-
-.video-container.vertical {
-    width: 220px;
-    height: 390px;
-}
-
-.video-container.horizontal {
-    width: 320px;
-    height: 180px;
-}   
-
-footer {
-    background-color: #7A002B;
-    color: #FFFFFF;
-    font-family: gwendolyn;
-    text-align: center;
-}
-
-
-
+/*Home Page*/
 /* index.html CAROUSEL */
 .carousel {
   position: relative;
@@ -187,3 +146,201 @@ footer {
 
 .prev-btn { left: 10px; }
 .next-btn { right: 10px; }
+
+
+/* Inspiration Page */
+
+.inspiration img {
+  width: 100%;          
+  max-width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px; 
+}
+
+p {
+    font-family: lato;
+}
+
+
+/*** My Nails Page */
+.myNails img {
+    width: 100%;        /*keep image ratio*/      
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px; 
+}
+
+
+/* Container to keep all image cards in a single horizontal line */
+.myNails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;     /* Prevents images from dropping to a second row */
+    justify-content: center; /* Centers the image cards horizontally on the page */
+    overflow-x: auto;      /* Adds a horizontal scrollbar if screen is too narrow */
+    gap: 16px;             /* Spacing between image cards */
+    padding: 10px;
+}
+
+/* Individual image and caption wrapper */
+.myNails figure {
+    margin: 0;
+    text-align: center;
+    flex: 0 0 auto;         /* Prevents images from shrinking */
+}
+
+.myNails figure img {
+    display: block;
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;     /* Applied border-radius directly to the active image selector */
+}
+
+/* Caption styling underneath each image */
+.myNails figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #000000;
+    font-family: lato;
+}
+
+/* Container set up with CSS Grid */
+.inspiration {
+    display: grid;
+    /* Forces exactly 4 equal-width columns per row */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px 20px;            /* 30px space between rows, 20px between columns */
+    justify-items: center;      /* Centers each item inside its grid column */
+    align-items: start;
+    max-width: 1100px;         /* Keeps grid bounded and centered on screen */
+    margin: 0 auto;            /* Centers the entire gallery container on the page */
+    padding: 20px;
+}
+
+/* Individual image/caption card formatting */
+.inspiration figure {
+    margin: 0;
+    text-align: center;
+}
+
+/* Consistent sizing for all inspiration photos */
+.inspiration figure img {
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;        /* Optional: smooth rounded corners */
+}
+
+.inspiration figure img,
+.myNails figure img {
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Caption formatting underneath each image */
+.inspiration figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #000000;
+    font-family: lato;
+}
+
+/* Optional: Automatically adjusts column count for smaller screens/phones */
+@media (max-width: 900px) {
+    .inspiration {
+        grid-template-columns: repeat(2, 1fr); /* Switches to 2 per row on smaller screens */
+    }
+}
+
+iframe {
+    border-radius: 4px; 
+}
+
+/*** Tutorials Page */
+
+.video-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 0;
+    display: block;
+}
+
+.video-container.vertical {
+    width: 220px;
+    height: 390px;
+}
+
+.video-container.horizontal {
+    width: 320px;
+    height: 180px;
+}   
+
+/* Contact Page */
+#contactH1 {
+    font-family: gwendolyn;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns child elements (form) to the left */
+    font-family: lato;
+    margin-left: 10px;
+}
+
+
+#messageH3 {
+    font-family: Lato;
+    text-align: left;
+    padding: 0;
+}
+
+button {
+    background-color: #7A002B;
+    color: #FFFFFF;
+    font-family: lato;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9e244e;
+}
+
+footer {
+    background-color: #7A002B;
+    color: #FFFFFF;
+    font-family: gwendolyn;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
