@@ -27,9 +27,45 @@
         </ul>
     </nav>
 
+    <main>
+    <h1 id="shopH1">Shop Nail Polish</h1>
+    <div class="shop-container">
+        <form id="shopForm" class="shop-form">
+            <h2>Choose your polish</h2>
+            <label>Color:
+                <select id="color" name="color">
+                    <option value="Burgundy" data-price="8.00">Burgundy - $8.00</option>
+                    <option value="Ladybug Red" data-price="8.00">Ladybug Red - $8.00</option>
+                    <option value="Blush Pink" data-price="7.50">Blush Pink - $7.50</option>
+                    <option value="Lavender Purple" data-price="7.50">Lavender Purple - $7.50</option>
+                    <option value="Sky Blue" data-price="7.00">Sky Blue - $7.00</option>
+                    <option value="Chrome Cherry" data-price="10.00">Chrome Cherry - $10.00</option>
+                    <option value="Classic White" data-price="6.50">Classic White - $6.50</option>
+                    <option value="Glossy Top Coat" data-price="6.00">Glossy Top Coat - $6.00</option>
+                </select>
+            </label>
+            <label>Quantity:
+                <input type="number" id="quantity" name="quantity" min="1" max="20" value="1">
+            </label>
+            <p class="line-total">Item total: <strong id="itemTotal">$0.00</strong></p>
+            <button type="button" id="addToCart">Add to Cart</button>
+        </form>
 
-
-    
+        <section class="cart" aria-live="polite">
+            <h2>Your Cart</h2>
+            <p id="emptyCart">Your cart is empty.</p>
+            <table id="cartTable" hidden>
+                <thead>
+                    <tr><th>Color</th><th>Price</th><th>Qty</th><th>Subtotal</th><th></th></tr>
+                </thead>
+                <tbody id="cartBody"></tbody>
+            </table>
+            <p class="cart-total">Order total: <strong id="cartTotal">$0.00</strong></p>
+            <button type="button" id="placeOrder" disabled>Place Order</button>
+            <p id="orderMessage" class="order-message" hidden></p>
+        </section>
+    </div>
+    </main>
 </body>
 <footer>Lydia Winder</footer>
 </html>
